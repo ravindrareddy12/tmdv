@@ -28,6 +28,8 @@ Sign Up:
 New users can create an account by providing their name,email and password.
 
 Signinin:
+POST:http://localhost:3000/signin
+
 Existing users can log in with their credentials.
 
 Add Task:
