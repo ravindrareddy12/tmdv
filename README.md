@@ -23,7 +23,7 @@ Make sure you have the following installed:
  4. npm run dev
 ### Features
 
-Sign Up:
+Sign Up:http://localhost:3000/signup
 
 New users can create an account by providing their name,email and password.
 
@@ -32,14 +32,20 @@ POST:http://localhost:3000/signin
 
 Existing users can log in with their credentials.
 
-Add Task:
+Add Task:POST /users/:userId/tasks
+
 Once logged in, users can add tasks with a title, description, and other relevant details.
 
-Edit Task:
+Edit Task:PUT /users/:userId/tasks/:taskId
 Users can edit existing tasks to update information.
 
-Delete Task:
+Delete Task:DELETE /users/:userId/tasks/:taskId
+
 Unwanted tasks can be deleted easily.
+
+Getting Task By Id:GET /users/:userId/tasks/:taskId
+
+
 
 Backend Integration
 The MongoDB is connected to the backend for storing and retrieving task data. Ensure that the backend server is running and accessible.
