@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://reddy:1234@cluster0.gdf3qiw.mongodb.net/REPL?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://reddy:1234@cluster0.gdf3qiw.mongodb.net/task?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
