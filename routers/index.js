@@ -1,12 +1,14 @@
 const express = require('express');
 const userController = require('../Controllers/UserController');
 const validate = require('../Middleware/Validator'); 
+const authenticate = require('../Middleware/Authenticaton')
 
 const router = express.Router();
 
 router.post('/signup', validate, userController.userSignup); 
 
 router.post('/signin', userController.userSignin);
+
 
 router.get('/users/:userId/tasks/:taskId', userController.getTaskById);
 

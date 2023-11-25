@@ -1,4 +1,5 @@
 const User = require('../Models/UserModel')
+const jwt = require('jsonwebtoken');
 
 
 
@@ -38,14 +39,16 @@ module.exports.userSignin = async (req, res) => {
         if (user.password !== password) {
             return res.status(401).json({ error: 'Incorrect password' });
         }
-
+        // const secretKey = 'your-secret-key';
+        // const token = jwt.sign({ user: user._id }, secretKey);
         const userId = user._id;
         const userName = user.name
 
         res.status(200).json({
             message: 'User signed in successfully',
             userId,
-            userName
+            userName,
+           
         });
     } catch (err) {
         console.error(err);
