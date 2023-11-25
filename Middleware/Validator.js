@@ -1,24 +1,13 @@
+// middleware/validation.js
+const { validationResult } = require('express-validator');
 
-const errorMiddleware = (err,req,res,next) => {
-    console.log(err);
-   const defaultErrors = {
-    statusCode:500,
-    message:err,
-   };
-
-   //missing field error
-   if(err.name === "ValidationError"){
-    defaultErrors.statusCode = 400,
-    defaultErrors.message = Object.values(err.errors)
-    .map(item => item.message )
-    .join(",");
-   }
-   //duplicate error
-   if(err.code && err.code === 11000){
-    defaultErrors.statusCode=400;
-    defaultErrors.message=`${Object.keys(err.keyValue)} field has to be unique`;
-   }
-   res.status(defaultErrors.statusCode).json({message : defaultErrors.message});
+const validate = (req, res, next) => {
+    const errors = validationResult(req);
+    console.log("validation")
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    next();
 };
 
-module.exports = errorMiddleware;
+module.exports = validate;
